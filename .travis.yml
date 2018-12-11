@@ -1,4 +1,7 @@
 language: go
+os:
+  - linux
+  - osx
 go:
 - '1.11'
 env:
@@ -8,8 +11,8 @@ jobs:
   - stage: Test and build
     script: make
     before_deploy:
-    - sudo apt-get update
-    - sudo apt-get install -y upx
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo apt-get update; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo apt-get install -y upx; fi
     - make dist-release
 deploy:
   provider: releases
