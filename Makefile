@@ -125,10 +125,7 @@ dist-release:
 		echo "🔘 dist-release started for macOS"; \
 		tar czf build/lyra-darwin-amd64.tar.gz build/lyra; \
 		shasum -a 256 build/lyra-darwin-amd64.tar.gz | awk '{ print $1 }' > build/lyra-darwin-amd64.tar.gz.sha256; \
-	fi
-
-	@if [[ "$(OS)" == "linux" ]]; \
-	then \
+	else; \
 		echo "🔘 dist-release started for Linux"; \
 		tar czf build/lyra-linux-amd64.tar.gz build/lyra; \
 		sha256sum build/lyra-linux-amd64.tar.gz | awk '{ print $1 }' > build/lyra-linux-amd64.tar.gz.sha256; \
